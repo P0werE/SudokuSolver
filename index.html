@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <script src="./sudoku.js" async></script>
+</head>
+<style media="screen">
+  body {
+    width: 100vw;
+    height: 100vh;
+  }
+
+  canvas {
+    background-color: white;
+    border: 1px black solid;
+  }
+
+  .can {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    padding: 10px;
+  }
+
+  .button-main {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    padding: 10px;
+  }
+
+  input[type=number] {
+    min-width: 20px;
+    width: 50px;
+  }
+
+  input[type=button] {
+    display: inline-block;
+    width: auto;
+    padding: 5px
+  }
+
+  ul {
+    justify-content: center;
+    list-style: none;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  ul>li:not(:last-child) {
+    margin-bottom: 10px;
+  }
+
+  .button-main p:not(:last-child) {
+    margin-right: 10px;
+  }
+
+  .hide {
+    display: none;
+  }
+
+  #enter {
+    font-size: 2rem;
+  }
+</style>
+
+<body>
+  <div class="normal">
+    <div class="can">
+      <canvas id="canvas"></canvas>
+    </div>
+    <div class="button-main">
+      <label>
+        <div id="enter" class="hide"> Set Value for <b id="coordinate"></b>
+          <label>
+            <input id="change_value" min="0" value="0" type="number" onClick="this.select();" >
+            </input>
+            <input id="submit_input" type="button" value="Ok" onclick="change()">
+            </input>
+          </label>
+        </div>
+        <input type="button" value="START" id="stopButton"></input>
+        <input type="button" value="RESET" id="resetButton"></input>
+        <input type="button" value="NEXT" onclick="next()"></input>
+        <input type="button" value="Log Field" onclick="spitout()"></input>
+      </label>
+    </div>
+    <div class="button-main">
+      <p> Width: <input type="number" value="800" min="1" id="width" onchange="apply()" step="10" autofocus> </input></p>
+      <p> Height: <input type="number" value="800" min="1" id="height" onchange="apply()" step="10" autofocus> </input></p>
+      <p> Refreshes/s: <input type="number" value="5" min="1" id="cycles" onchange="apply()" autofocus> </input></p>
+      <p> Grid Size: <input type="number" value="3" step="1" min="1" id="grid-size" onchange="newSet()" autofocus> </input></p>
+    </div>
+  </div>
+  <div class="button-main">
+    <p><textarea id="load" rows="4" cols="50" value="" step="10"> </textarea></p>
+    <p><input type="button" value="Load" onClick="loadGrid()"></input></p>
+  </div>
+</div>
+
+</body>
+
+</html>
